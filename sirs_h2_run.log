@@ -1,0 +1,103 @@
+Installed 5 packages in 36ms
+SIRS-grounded H2 dissociation test
+========================================================================
+
+R = 0.60 A
+  PBE:    E = -1.134666 Ha,  occs = [2.00000000e+00 2.39152397e-16 1.80740933e-17 7.57440197e-34],  H_vN = -0.0000
+  CCSD(T):E = -1.139566 Ha,  occs = [1.97404716 0.01314333 0.00572508 0.00326461],  H_vN = 0.0863
+  PBE - CCSD(T): +4.900 mHa
+  Correction at T_resolution_0.3K: +0.0001 mHa
+  Correction at T_room_298K: +0.0565 mHa
+  Correction at T_electronic_10000K: +1.8944 mHa
+
+R = 0.74 A
+  PBE:    E = -1.160021 Ha,  occs = [2.00000000e+00 2.87985079e-16 6.17726925e-18 1.95672640e-48],  H_vN = 0.0000
+  CCSD(T):E = -1.163314 Ha,  occs = [1.96714959 0.02043142 0.00613652 0.00281025],  H_vN = 0.1025
+  PBE - CCSD(T): +3.292 mHa
+  Correction at T_resolution_0.3K: +0.0001 mHa
+  Correction at T_room_298K: +0.0670 mHa
+  Correction at T_electronic_10000K: +2.2491 mHa
+
+R = 1.00 A
+  PBE:    E = -1.138897 Ha,  occs = [2.00000000e+00 1.59240098e-16 8.61886479e-17 4.70368381e-33],  H_vN = 0.0000
+  CCSD(T):E = -1.139590 Ha,  occs = [1.94459881e+00 4.53588804e-02 5.60618321e-03 1.81691660e-03],  H_vN = 0.1461
+  PBE - CCSD(T): +0.692 mHa
+  Correction at T_resolution_0.3K: +0.0001 mHa
+  Correction at T_room_298K: +0.0956 mHa
+  Correction at T_electronic_10000K: +3.2070 mHa
+
+R = 1.50 A
+  PBE:    E = -1.057183 Ha,  occs = [2.00000000e+00 9.51921463e-17 1.33269276e-19 9.69672827e-34],  H_vN = -0.0000
+  CCSD(T):E = -1.061024 Ha,  occs = [1.82298890e+00 1.73108418e-01 2.24076705e-03 4.99108029e-04],  H_vN = 0.3111
+  PBE - CCSD(T): +3.840 mHa
+  Correction at T_resolution_0.3K: +0.0002 mHa
+  Correction at T_room_298K: +0.2035 mHa
+  Correction at T_electronic_10000K: +6.8299 mHa
+
+R = 2.00 A
+  PBE:    E = -0.995618 Ha,  occs = [2.00000000e+00 4.86240707e-16 1.10108636e-17 7.82737308e-20],  H_vN = 0.0000
+  CCSD(T):E = -1.017418 Ha,  occs = [1.56429795e+00 4.34921625e-01 3.35856031e-04 1.08780199e-04],  H_vN = 0.5277
+  PBE - CCSD(T): +21.800 mHa
+  Correction at T_resolution_0.3K: +0.0003 mHa
+  Correction at T_room_298K: +0.3452 mHa
+  Correction at T_electronic_10000K: +11.5832 mHa
+
+R = 2.50 A
+  PBE:    E = -0.958233 Ha,  occs = [2.00000000e+00 3.03499806e-16 8.22844508e-17 1.93299725e-20],  H_vN = -0.0000
+  CCSD(T):E = -1.003094 Ha,  occs = [1.30664606e+00 6.93226627e-01 4.53437129e-05 2.10412355e-05],  H_vN = 0.6461
+  PBE - CCSD(T): +44.861 mHa
+  Correction at T_resolution_0.3K: +0.0004 mHa
+  Correction at T_room_298K: +0.4226 mHa
+  Correction at T_electronic_10000K: +14.1821 mHa
+
+R = 3.00 A
+  PBE:    E = -0.937139 Ha,  occs = [2.00000000e+00 1.13368273e-16 7.03119147e-17 2.24851466e-20],  H_vN = 0.0000
+  CCSD(T):E = -0.999543 Ha,  occs = [1.14974421e+00 8.50233640e-01 9.42550982e-06 4.07286178e-06],  H_vN = 0.6820
+  PBE - CCSD(T): +62.404 mHa
+  Correction at T_resolution_0.3K: +0.0004 mHa
+  Correction at T_room_298K: +0.4461 mHa
+  Correction at T_electronic_10000K: +14.9712 mHa
+
+R = 4.00 A
+  PBE:    E = -0.919703 Ha,  occs = [2.00000000e+00 9.03844691e-17 6.48570969e-22 3.44906756e-22],  H_vN = 0.0000
+  CCSD(T):E = -0.998605 Ha,  occs = [1.03173168e+00 9.68266882e-01 7.42473113e-07 2.55230096e-07],  H_vN = 0.6927
+  PBE - CCSD(T): +78.902 mHa
+  Correction at T_resolution_0.3K: +0.0005 mHa
+  Correction at T_room_298K: +0.4531 mHa
+  Correction at T_electronic_10000K: +15.2042 mHa
+
+R = 5.00 A
+  PBE:    E = -0.915193 Ha,  occs = [2.00000000e+00 9.56095211e-17 4.20382852e-25 1.92313863e-25],  H_vN = 0.0000
+  CCSD(T):E = -0.998560 Ha,  occs = [1.00567671e+00 9.94322999e-01 1.19305808e-07 7.23246240e-08],  H_vN = 0.6931
+  PBE - CCSD(T): +83.366 mHa
+  Correction at T_resolution_0.3K: +0.0005 mHa
+  Correction at T_room_298K: +0.4534 mHa
+  Correction at T_electronic_10000K: +15.2147 mHa
+
+========================================================================
+ANALYSIS
+========================================================================
+
+Question 1: Does H_vN scale as predicted (0 at eq → ln 2 at dissoc)?
+  H_vN(CCSD) at R=0.74 (eq): 0.1025 nats
+  H_vN(CCSD) at R=5.00 (∞):  0.6931 nats
+  Predicted long-bond limit: ln 2 = 0.6931 nats
+  Match to ln 2: 100.0%
+
+Question 2: At each candidate T, does (PBE + correction) approach CCSD(T)?
+  PBE error grows from +3.29 mHa (eq) to +83.37 mHa (R=5)
+
+  At T_resolution_0.3K: corr at R=5 = +0.0005 mHa, residual = +83.367 mHa
+  At T_room_298K: corr at R=5 = +0.4534 mHa, residual = +83.820 mHa
+  At T_electronic_10000K: corr at R=5 = +15.2147 mHa, residual = +98.581 mHa
+
+Question 3: What T_fit would make correction match PBE error at R=5?
+  T_fit = -54793 K
+  k_B T_fit = -173.5193 mHa = -4721.63 meV
+
+  Is T_fit physically interpretable, or just a free parameter?
+  → Below typical numerical precision T (suggests SIRS framing too weak).
+
+Results CSV: sirs_h2_results.csv
+
+Verdict: see wiki/topics/sirs-reformulation-scoping.md for interpretation.
