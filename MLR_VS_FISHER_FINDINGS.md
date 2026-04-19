@@ -117,6 +117,86 @@ direct head-to-head between the two frameworks on shared data.
 4. **Per-region SCC tuning.** ρ_s and h_power were not optimized here. They
    could probably reduce MLR MAE further on H2+.
 
+## 2026-04-18 update: G2-1 LOOCV done, λ-bridge gap exposed
+
+### G2-1 LOOCV result
+Ran `mlr_vs_fisher_g2_loocv.py` on a 12-molecule G2-1 subset (H2, LiH, CH4, NH3,
+H2O, HF, N2, F2, CO, HCl, H2S, LiF) with 8 atoms (H, Li, C, N, O, F, S, Cl) and
+a 4×4 (α, λ_SCC) grid. Reference: CCSD(T)/def2-svp atomization energies.
+
+| Metric | Fisher | MLR | |
+|---|---:|---:|---|
+| Mean MAE (out-of-sample) | 25.7 mHa | 58.1 mHa | Fisher 2.3× better |
+| Wins on held-out molecule | 12/12 | 0/12 | Fisher swept |
+| ΔBIC | — | — | −20.3 (very strong evidence for Fisher) |
+
+The H2 in-sample win (32% MAE reduction) **did not generalize**. Two reasons:
+(1) atomization energy compounds errors from atoms AND molecules in a way
+total energy does not, (2) in-sample optimization on 7 points was essentially
+fitting noise.
+
+### Diagnostic: SCC over-binds molecules vs atoms
+`diagnose_scc_ae.py` decomposed the AE error per molecule:
+
+| Mol | sum(ΔE_atom from SCC) | ΔE_mol from SCC | ΔAE_SCC |
+|-----|---:|---:|---:|
+| H2 | -18.2 | -22.5 | **+4.4** |
+| CH4 | -198.8 | -254.5 | **+55.7** |
+| NH3 | -191.3 | -248.0 | **+56.7** |
+| H2S | -878.6 | -956.3 | **+77.8** |
+
+Sign positive every time — molecule shifts more than sum of atoms. The SCC
+gate `w_eff = w(z) × h(ρ)` activates in low-density single-orbital regions;
+bonding regions are exactly such regions, so bonding electrons get an extra
+dose of self-Coulomb removal that core atomic electrons don't. The mechanism
+is interpretable, not random.
+
+### λ-bridge gap (the real finding)
+The G2-1 LOOCV used λ_SCC (dimensionless rescaling in `SCCModule`) as a
+stand-in for MLR's λ_E (action coefficient on the energy term in
+𝓡 = K + H + λE). **There is no derivation linking these two quantities.**
+The wiki's [λ Convention Audit](https://github.com/curv-institute/curv-wiki/blob/main/wiki/topics/fix-lambda-convention-audit.md)
+flags exactly this kind of substitution as forbidden:
+
+> "Until equivalence is proven, use provisional names: λ_E for the multiplier
+> in 𝓡 = K + H + λE… Deprecate naked λ in public docs until all mappings are
+> explicit."
+
+### K19 scaling test confirms the gap empirically
+Ran `k19_scaling_test.py`. K19 claims a universal scaling law S ∝ λ⁻¹ with
+R² = 1.000 across the MLR optimizer/A2/cosmology domains. We tested whether
+λ_SCC obeys this law on our chemistry data:
+
+- Mean R² = **0.871** across 20 entities (8 atoms + 12 molecules)
+- 0/20 reach K19's claimed R² = 1.000
+- Slopes consistently positive (S decreases as λ_SCC increases) — the
+  relationship is real, but not pure 1/λ
+- λ_SCC is **structurally not a member** of the K19/optimizer/A2 λ family
+
+### Reframing
+Combined with the dimensional analysis in
+[`lambda-catalog.md`](https://github.com/curv-institute/curv-wiki/blob/main/wiki/topics/lambda-catalog.md):
+
+- λ_SCC is dimensionless O(0.1)
+- λ_E is 1/Energy
+- λ_SIRS = 1/(k_B T ln 2) ≈ 1530/Ha
+- K19's λ obeys S ∝ λ⁻¹; λ_SCC does not
+
+**The G2-1 LOOCV result is best read as "SCC v2 hurts atomization energies in
+LOOCV" — a real and useful finding about the SCC operationalization, but NOT
+a test of MLR theory.** A defensible MLR vs Fisher chemistry test requires
+either (a) a derivation showing λ_SCC = c · λ_E in this normalization, or
+(b) a new operationalization of E as an explicit information-cost term
+closer to λ_SIRS's reading.
+
+### Files added in this update
+- `mlr_vs_fisher_g2_loocv.py` — LOOCV experiment
+- `g2_loocv_energies.csv` — energy cache
+- `g2_loocv_results.csv` — per-molecule LOOCV errors
+- `diagnose_scc_ae.py` — atom-vs-molecule decomposition
+- `k19_scaling_test.py` — K19 scaling test on λ_SCC
+- `k19_scaling_results.csv` — K19 raw entropies
+
 ## Files produced
 
 | File | Purpose |

@@ -1,0 +1,71 @@
+Computing atom energies (always use UKS for open shells)...
+  H: ref=-0.499278, grid done
+  Li: ref=-7.427945, grid done
+  C: ref=-37.716821, grid done
+  N: ref=-54.423343, grid done
+  O: ref=-74.839096, grid done
+  F: ref=-99.436308, grid done
+  S: ref=-397.475632, grid done
+  Cl: ref=-459.453662, grid done
+
+Computing molecule energies...
+  H2: ref=-1.163339, grid done
+  LiH: ref=-8.007904, grid done
+  CH4: ref=-40.360403, grid done
+  NH3: ref=-56.357535, grid done
+  H2O: ref=-76.176948, grid done
+  HF: ref=-100.140951, grid done
+  N2: ref=-109.180019, grid done
+  F2: ref=-198.919172, grid done
+  CO: ref=-112.954840, grid done
+  HCl: ref=-460.110303, grid done
+  H2S: ref=-398.744221, grid done
+  LiF: ref=-107.058495, grid done
+
+Reference atomization energies (Ha):
+  H2    : +0.164783
+  LiH   : +0.080680
+  CH4   : +0.646468
+  NH3   : +0.436356
+  H2O   : +0.339295
+  HF    : +0.205365
+  N2    : +0.333332
+  F2    : +0.046556
+  CO    : +0.398924
+  HCl   : +0.157362
+  H2S   : +0.270032
+  LiF   : +0.194241
+
+12 molecules with valid reference AE
+
+========================================================================
+LOOCV
+========================================================================
+  Held |    F α |      F err |      M α,λ |      M err |        F-M | winner
+--------------------------------------------------------------------------------
+    H2 |  0.001 |     2.08m | 0.001,0.05 |     2.27m |    -0.19m | Fisher
+   LiH |  0.001 |     5.18m | 0.001,0.05 |    18.28m |   -13.10m | Fisher
+   CH4 |  0.001 |    28.44m | 0.001,0.05 |    84.13m |   -55.69m | Fisher
+   NH3 |  0.001 |    37.81m | 0.001,0.05 |    94.55m |   -56.75m | Fisher
+   H2O |  0.001 |    24.79m | 0.001,0.05 |    67.98m |   -43.19m | Fisher
+    HF |  0.001 |    12.64m | 0.001,0.05 |    34.79m |   -22.15m | Fisher
+    N2 |  0.001 |    58.94m | 0.001,0.05 |    75.10m |   -16.16m | Fisher
+    F2 |  0.001 |    47.02m | 0.001,0.05 |    53.43m |    -6.41m | Fisher
+    CO |  0.001 |    40.01m | 0.001,0.05 |    73.18m |   -33.17m | Fisher
+   HCl |  0.001 |     9.49m | 0.001,0.05 |    55.51m |   -46.02m | Fisher
+   H2S |  0.001 |    17.62m | 0.001,0.05 |    95.38m |   -77.76m | Fisher
+   LiF |  0.001 |    24.18m | 0.001,0.05 |    42.90m |   -18.72m | Fisher
+
+========================================================================
+LOOCV SUMMARY (out-of-sample)
+========================================================================
+  N held-out:   12
+  Fisher MAE:   25.68 mHa  (= 16.12 kcal/mol)
+  MLR    MAE:   58.12 mHa  (= 36.47 kcal/mol)
+  Improvement:  -32.44 mHa  (positive = MLR better)
+  MLR wins at:  0/12 held-out molecules
+  ΔAIC (F-M):   -19.84
+  ΔBIC (F-M):   -20.33  (positive => MLR preferred even with extra parameter)
+
+  Results: g2_loocv_results.csv
+  Cache:   g2_loocv_energies.csv
