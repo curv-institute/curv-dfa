@@ -109,6 +109,10 @@ the two frameworks on shared data *(reversed out-of-sample; see update)*.
 3. **SCC v1 vs v2 history matters.** The original `composability_h2.csv` /
    `composability_h2plus.csv` files use v1 and should be regenerated with v2 if
    they're cited elsewhere. The 2% composability claim was tested on v1.
+   **✅ Done 2026-06-09:** regenerated with SCC v2 (`composability_test_sccv2.py`,
+   `*_sccv2.csv`) — claim **confirmed and tightened**: max relative composability
+   error 1.38% (H2) / 0.99% (H2⁺), vs 1.40% / 1.81% under v1 on the same metric.
+   See `COMPOSABILITY_SCCV2.md`.
 
 ## What to run next (priority order)
 
