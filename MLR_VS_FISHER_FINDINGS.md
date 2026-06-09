@@ -1,5 +1,7 @@
 # MLR vs Fisher Information: Empirical Head-to-Head on H2/H2+
 
+> **STATUS (2026-04-18, superseded):** The H2 result below is an **in-sample best fit on 7–8 radii** and **did not generalize**: on G2-1 LOOCV (12 molecules, held-out), Fisher beat MLR 12/12 with ΔBIC = −20.3 (very strong evidence for Fisher). The experiment used λ_SCC (a dimensionless implementation rescaling) as a stand-in for MLR's λ_E with no derivation linking the two, so this was **not a test of MLR theory**. See the "2026-04-18 update" section below. The sections between here and that update are retained for audit trail only and should not be quoted.
+
 **Date:** 2026-04-18
 **Scripts:** `mlr_vs_fisher_ablation.py`, `mlr_vs_fisher_ablation_v2.py`, `mlr_vs_fisher_calibrated.py`
 **Data:** `composability_h2.csv`, `composability_h2plus.csv`, `ablation_v2_*.csv`, `calibrated_v2_results.csv`
@@ -60,9 +62,11 @@ The single-calibration-point bias was hiding genuine structure.
 | System | Best Fisher (α) | Fisher MAE | Best MLR (α, λ) | MLR MAE | ΔBIC | Verdict |
 |--------|----------------:|-----------:|----------------:|--------:|-----:|---------|
 | H2+    | α=0.012         | 26.7 mHa   | α=0.03, λ=0.2   | 26.1 mHa | -4.6  | MLR ≈ Fisher |
-| H2     | α=0.001         | 24.5 mHa   | α=0.002, λ=0.05 | **16.7 mHa** | **+3.9** | **MLR > Fisher** |
+| H2     | α=0.001         | 24.5 mHa   | α=0.002, λ=0.05 | **16.7 mHa** | **+3.9** | **MLR > Fisher** *(in-sample only; reversed on G2-1 LOOCV — see update)* |
 
 ## What this means
+
+**[Superseded — see 2026-04-18 update]**
 
 **For H2 (closed shell, multireference at long bond):** MLR beats Fisher by 32%
 in MAE *and* survives the BIC penalty for its extra parameter. ΔBIC = +3.9 is
@@ -74,11 +78,12 @@ term is doing real work in the regime where DFT's classical failure modes
 The MAE improvement is tiny (0.6 mHa) and BIC penalizes MLR's extra parameter.
 This is a genuine null — neither framework dominates here.
 
-**For the broader MLR vs Fisher claim:** The energy term earns its place on at
-least one canonical chemistry benchmark. The original "MLR with E term beats
-Fisher without it" hypothesis is not refuted; it has support on H2 and is
-inconclusive on H2+. This is a real, publishable empirical result — the first
-direct head-to-head between the two frameworks on shared data.
+**[Superseded — see 2026-04-18 update]** **For the broader MLR vs Fisher
+claim:** The energy term earns its place on at least one canonical chemistry
+benchmark. The original "MLR with E term beats Fisher without it" hypothesis
+is not refuted; it has support on H2 and is inconclusive on H2+. ~~This is a
+real, publishable empirical result~~ — the first direct head-to-head between
+the two frameworks on shared data *(reversed out-of-sample; see update)*.
 
 ## What this is NOT
 
@@ -180,7 +185,7 @@ Combined with the dimensional analysis in
 - λ_SCC is dimensionless O(0.1)
 - λ_E is 1/Energy
 - λ_SIRS = 1/(k_B T ln 2) ≈ 1530/Ha
-- K19's λ obeys S ∝ λ⁻¹; λ_SCC does not
+- K19's λ obeys S ∝ λ⁻¹; λ_SCC does not *(K19's S ∝ λ⁻¹ was later found to be a definitional identity, not an empirical law — withdrawn 2026-04-18)*
 
 **The G2-1 LOOCV result is best read as "SCC v2 hurts atomization energies in
 LOOCV" — a real and useful finding about the SCC operationalization, but NOT
